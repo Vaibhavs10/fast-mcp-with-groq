@@ -1,23 +1,17 @@
-# Blazingly fast Agents with MCP and *Groq* 💥
+# Blazingly Fast Agents with MCP and *Groq* 💥
 
-Hugging Face makes it easy to use powerful AI models without needing to build everything from scratch. Groq is great at running these models super fast, which means your AI applications can respond quickly. 
+Build powerful AI applications with Hugging Face's pre-trained models and Groq's lightning-fast inference. The Model Control Protocol (MCP) seamlessly connects these tools, enabling you to create sophisticated AI workflows with minimal effort.
 
-The Model Control Protocol (MCP) ties everything together by letting different AI tools work together smoothly. This combination means you can build AI applications that are both powerful and easy to use.
+In this guide, we'll explore MCP and demonstrate how to build blazingly fast AI agents using Groq. We'll use Hugging Face's lightweight MCP clients:
 
-In this post we will take an applied overview of MCP and how you can build some really cool workflows with blazingly fast inference from Groq.
+1. `@huggingface/tiny-agents` (TypeScript)
+2. `huggingface_hub[mcp]` (Python)
 
-We'll use tiny MCP clients from Hugging Face to showcase what's possible:
-
-1. `@huggingface/tiny-agents` (for TS fans)
-2. `huggingface_hub[mcp]` (for python fans)
-
-Let's start building AI agents. An agent is as good as the tools given to it. MCP allows for a standardised way of interacting with tools. That's it.
-
-Now, let's start with a simple scenario where we give browser access to an agent and ask it to search the web for us!
+The key to building effective AI agents lies in their tools. MCP provides a standardized interface for tool interaction, making it simple to create powerful agents. Let's dive in by creating a web-savvy agent that can browse and search the internet for you.
 
 Step 1: Define the Agent
 
-Both the JS and Python Tiny agent clients are meant to be quite easy to play and experinemt with. They expect a transparent `agent.json` which includes the details of which LLM should be used and what tools would it have access too.
+Both the JS and Python Tiny agent clients are meant to be quite easy to play and experiment with. They expect a transparent `agent.json` which includes the details of which LLM should be used and what tools it should have access to.
 
 Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to a Playwright MCP server for browser automation.
 
@@ -112,3 +106,5 @@ You can do exactly the same thing with our JavaScript client as well
 ```bash
 npx @huggingface/tiny-agents run ./hf-mcp-server
 ```
+
+That's it! What would you build next with it?
