@@ -1,0 +1,15 @@
+{
+	"model": "Qwen/Qwen3-32B",
+	"provider": "groq",
+	"servers": [
+		{
+			"type": "http",
+			"config": {
+				"url": "https://huggingface.co/mcp",
+                "headers": {
+                    "Authorization": "Bearer <HF_TOKEN>"
+                  }
+			}
+		}
+	]
+}
