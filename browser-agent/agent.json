@@ -1,5 +1,5 @@
 {
-	"model": "meta-llama/Llama-3.3-70B-Instruct",
+	"model": "Qwen/Qwen3-32B",
 	"provider": "groq",
 	"servers": [
 		{

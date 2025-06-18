@@ -23,7 +23,7 @@ Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to
 
 ```json
 {
-	"model": "meta-llama/Llama-3.3-70B-Instruct",
+	"model": "Qwen/Qwen3-32B",
 	"provider": "groq",
 	"servers": [
 		{
