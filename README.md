@@ -79,6 +79,8 @@ Let's get it set up!
 
 Step 1: Head over to [hf.co/mcp](https://hf.co/mcp) and add the spaces/ demo that you want to be able to play with
 
+For example, I've added the following space 
+
 Next, let's update our `agent.json`:
 
 ```json
@@ -99,4 +101,14 @@ Next, let's update our `agent.json`:
 }
 ```
 
-Step 2: 
+Step 2: Run with Tiny agents
+
+```bash
+tiny-agents run ./hf-mcp-server
+```
+
+You can do exactly the same thing with our JavaScript client as well
+
+```bash
+npx @huggingface/tiny-agents run ./hf-mcp-server
+```
