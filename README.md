@@ -50,7 +50,7 @@ Step 2: Run the agent.
 To run the agent in Python, we'll simply install tiny-agents package part of the `huggingface_hub` library.
 
 ```bash
-uv pip install "huggingface_hub[mcp]>=0.32.0"
+pip install "huggingface_hub[mcp]>=0.32.0"
 ```
 
 Followed by running our agent:
@@ -59,11 +59,15 @@ Followed by running our agent:
 tiny-agents run ./browser-agent
 ```
 
+![Hugging Face MCP Settings page](assets/init-browser.png)
+
 You can do exactly the same thing with our JavaScript client as well
 
 ```bash
 npx @huggingface/tiny-agents run ./browser-agent
 ```
+
+![Hugging Face MCP Settings page](assets/output-browser-agent.png)
 
 Voila, you now have a capable browser agent with you!
 
@@ -72,6 +76,8 @@ Let's take it up a notch and give more creative freedom to our AI Agent, cue, Hu
 Let's get it set up!
 
 Step 1: Head over to [hf.co/mcp](https://hf.co/mcp) and add the spaces/ demo that you want to be able to play with
+
+![Hugging Face MCP Settings page](assets/hf-mcp.png)
 
 For example, I've added the following space 
 
@@ -106,5 +112,7 @@ You can do exactly the same thing with our JavaScript client as well
 ```bash
 npx @huggingface/tiny-agents run ./hf-mcp-server
 ```
+
+![Hugging Face MCP Settings page](assets/output-hf-server.png)
 
 That's it! What would you build next with it?
