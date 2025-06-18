@@ -73,3 +73,30 @@ npx @huggingface/tiny-agents run ./browser-agent
 
 Voila, you now have a capable browser agent with you!
 
+Let's take it up a notch and give more creative freedom to our AI Agent, cue, Hugging Face MCP Server. The Hugging Face MCP server allows you to not only interact with the HF Hub but also with 1000s of AI spaces on [hf.co/spaces](https://hf.co/spaces). 
+
+Let's get it set up!
+
+Step 1: Head over to [hf.co/mcp](https://hf.co/mcp) and add the spaces/ demo that you want to be able to play with
+
+Next, let's update our `agent.json`:
+
+```json
+{
+	"model": "Qwen/Qwen3-32B",
+	"provider": "groq",
+	"servers": [
+		{
+			"type": "http",
+			"config": {
+				"url": "https://huggingface.co/mcp",
+                "headers": {
+                    "Authorization": "Bearer <HF_TOKEN>"
+                  }
+			}
+		}
+	]
+}
+```
+
+Step 2: 
