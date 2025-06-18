@@ -1,0 +1,13 @@
+{
+	"model": "meta-llama/Llama-3.3-70B-Instruct",
+	"provider": "groq",
+	"servers": [
+		{
+			"type": "stdio",
+			"config": {
+				"command": "npx",
+				"args": ["@playwright/mcp@latest"]
+			}
+		}
+	]
+}
