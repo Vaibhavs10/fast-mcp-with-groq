@@ -9,11 +9,23 @@ In this guide, we'll explore MCP and demonstrate how to build blazingly fast AI 
 
 The key to building effective AI agents lies in their tools. MCP provides a standardized interface for tool interaction, making it simple to create powerful agents. Let's dive in by creating a web-savvy agent that can browse and search the internet for you.
 
-Step 1: Define the Agent
+## **Example**: Local Browser Agent
+
+Let's build a browser agent that can browse and search the internet for you. We've already implemented this in `/browser-agent` directory in case you want to skip ahead.
+
+### Step 0: Log in to Hugging Face
+
+```bash
+huggingface-cli login
+```
+
+This will ask you for your Hugging Face API token. You can get it from [here](https://huggingface.co/settings/tokens).
+
+### Step 1: Define the Agent
 
 Both the JS and Python Tiny agent clients are meant to be quite easy to play and experiment with. They expect a transparent `agent.json` which includes the details of which LLM should be used and what tools it should have access to.
 
-Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to a Playwright MCP server for browser automation.
+Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to a Playwright MCP server for browser automation. We've added this in `/browser-agent/agent.json` for you to use.
 
 ```json
 {
@@ -31,7 +43,7 @@ Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to
 }
 ```
 
-Optionally, we can define a System Prompt that helps steer the LLM
+Optionally, we can define a System Prompt that helps steer the LLM. This is defined in `/browser-agent/PROMPT.md` for you to use.
 
 ```markdown
 You are an agent - please keep going until the user’s query is completely resolved, before ending your turn and yielding back to the user. Only terminate your turn when you are sure that the problem is solved, or if you need more info from the user to solve the problem.
@@ -45,7 +57,7 @@ Help the User with their task.
 
 That's it, let's take it out for a spin.
 
-Step 2: Run the agent.
+### Step 2: Run the agent
 
 To run the agent in Python, we'll simply install tiny-agents package part of the `huggingface_hub` library.
 
@@ -61,21 +73,27 @@ tiny-agents run ./browser-agent
 
 ![Hugging Face MCP Settings page](assets/init-browser.png)
 
-You can do exactly the same thing with our JavaScript client as well
 
-```bash
-npx @huggingface/tiny-agents run ./browser-agent
-```
+> [!NOTE]
+> You can do exactly the same thing with our JavaScript client as well.
+>
+> ```bash
+> npx @huggingface/tiny-agents run ./browser-agent
+> ```
 
 ![Hugging Face MCP Settings page](assets/output-browser-agent.png)
 
 Voila, you now have a capable browser agent with you!
 
+## **Example**: Accessing Hugging Face MCP Servers
+
 Let's take it up a notch and give more creative freedom to our AI Agent, cue, Hugging Face MCP Server. The Hugging Face MCP server allows you to not only interact with the HF Hub but also with 1000s of AI spaces on [hf.co/spaces](https://hf.co/spaces). 
 
 Let's get it set up!
 
-Step 1: Head over to [hf.co/mcp](https://hf.co/mcp) and add the spaces/ demo that you want to be able to play with
+## Step 1: Find an MCP Server
+
+Head over to [hf.co/mcp](https://hf.co/mcp) and add the spaces/ demo that you want to be able to play with
 
 ![Hugging Face MCP Settings page](assets/hf-mcp.png)
 
@@ -101,17 +119,20 @@ Next, let's update our `agent.json`:
 }
 ```
 
-Step 2: Run with Tiny agents
+### Step 2: Run it!
+
+Let's run it with Tiny agents just like we did with the local browser agent.
 
 ```bash
 tiny-agents run ./hf-mcp-server
 ```
 
-You can do exactly the same thing with our JavaScript client as well
-
-```bash
-npx @huggingface/tiny-agents run ./hf-mcp-server
-```
+> [!NOTE]
+> Again, you can do exactly the same thing with our JavaScript client as well.
+> 
+> ```bash
+> npx @huggingface/tiny-agents run ./hf-mcp-server
+> ```
 
 ![Hugging Face MCP Settings page](assets/output-hf-server.png)
 
