@@ -1,6 +1,6 @@
 # Blazingly Fast Agents with MCP and *Groq* 💥
 
-Build powerful AI applications with Hugging Face's pre-trained models and Groq's lightning-fast inference. The Model Control Protocol (MCP) seamlessly connects these tools, enabling you to create sophisticated AI workflows with minimal effort.
+Build powerful AI applications with Hugging Face's pre-trained models and Groq's lightning-fast inference. The Model Context Protocol (MCP) seamlessly connects these tools, enabling you to create sophisticated AI workflows with minimal effort.
 
 In this guide, we'll explore MCP and demonstrate how to build blazingly fast AI agents using Groq. We'll use Hugging Face's lightweight MCP clients:
 
@@ -25,7 +25,7 @@ This will ask you for your Hugging Face API token. You can get it from [here](ht
 
 Both the JS and Python Tiny agent clients are meant to be quite easy to play and experiment with. They expect a transparent `agent.json` which includes the details of which LLM should be used and what tools it should have access to.
 
-Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to a Playwright MCP server for browser automation. We've added this in `/browser-agent/agent.json` for you to use.
+Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to [this Playwright MCP server](https://github.com/microsoft/playwright-mcp) that provides browser automation capabilities to your agent. We've added this in `/browser-agent/agent.json` for you to use.
 
 ```json
 {
@@ -45,21 +45,20 @@ Let's define our agent using Llama 3.3 70B Instruct as the LLM and connect it to
 
 Optionally, we can define a System Prompt that helps steer the LLM. This is defined in `/browser-agent/PROMPT.md` for you to use.
 
-```markdown
-You are an agent - please keep going until the user’s query is completely resolved, before ending your turn and yielding back to the user. Only terminate your turn when you are sure that the problem is solved, or if you need more info from the user to solve the problem.
-
-If you are not sure about anything pertaining to the user’s request, use your tools to read files and gather the relevant information: do NOT guess or make up an answer.
-
-You MUST plan extensively before each function call, and reflect extensively on the outcomes of the previous function calls. DO NOT do this entire process by making function calls only, as this can impair your ability to solve the problem and think insightfully.
-
-Help the User with their task.
+> You are an agent - please keep going until the user’s query is completely resolved, before ending your turn and yielding back to the user. Only terminate your turn when you are sure that the problem is solved, or if you need more info from the user to solve the problem.
+> 
+> If you are not sure about anything pertaining to the user’s request, use your tools to read files and gather the relevant information: do NOT guess or make up an answer.
+> 
+> You MUST plan extensively before each function call, and reflect extensively on the outcomes of the previous function calls. DO NOT do this entire process by making function calls only, as this can impair your ability to solve the problem and think insightfully.
+> 
+> Help the User with their task.
 ```
 
 That's it, let's take it out for a spin.
 
 ### Step 2: Run the agent
 
-To run the agent in Python, we'll simply install tiny-agents package part of the `huggingface_hub` library.
+To run the agent in Python, we simply install the `tiny-agents` package, which is part of the `huggingface_hub` library.
 
 ```bash
 pip install "huggingface_hub[mcp]>=0.32.0"
@@ -73,6 +72,7 @@ tiny-agents run ./browser-agent
 
 ![Hugging Face MCP Settings page](assets/init-browser.png)
 
+When the agent starts, you can chat with it to ask him to solve tasks. For example, try to ask it to find the top 10 Hugging Face models, and see if it's able to connect to the website using the Playwright MCP tool we configured!
 
 > [!NOTE]
 > You can do exactly the same thing with our JavaScript client as well.
